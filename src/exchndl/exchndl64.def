@@ -2,4 +2,5 @@ LIBRARY exchndl.dll
 
 EXPORTS
     ExcHndlInit
+	ExcHndlInitVectored
     ExcHndlSetLogFileNameA

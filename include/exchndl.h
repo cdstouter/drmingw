@@ -30,6 +30,12 @@ EXTERN_C VOID APIENTRY
 ExcHndlInit(void);
 
 
+// Set the unhandled exception handler.
+// This variation uses AddVectoredExceptionHandler instead of SetUnhandledExceptionFilter.
+EXTERN_C VOID APIENTRY
+ExcHndlInitVectored(void);
+
+
 // Override the report file name.
 //
 // Default is prog_name.RPT, in the same directory as the main executable.

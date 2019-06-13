@@ -239,6 +239,14 @@ SetupHandler(void)
 
 
 static void
+SetupHandlerVectored(void)
+{
+    // Install the unhandled exception filter function
+	AddVectoredExceptionHandler(1, TopLevelExceptionFilter);
+}
+
+
+static void
 CleanupHandler(void)
 {
     if (g_bHandlerSet) {
@@ -251,6 +259,13 @@ CleanupHandler(void)
 
 VOID APIENTRY
 ExcHndlInit(void)
+{
+    SetupHandler();
+}
+
+
+VOID APIENTRY
+ExcHndlInitVectored(void)
 {
     SetupHandler();
 }
