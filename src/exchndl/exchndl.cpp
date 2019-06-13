@@ -267,7 +267,7 @@ ExcHndlInit(void)
 VOID APIENTRY
 ExcHndlInitVectored(void)
 {
-    SetupHandler();
+    SetupHandlerVectored();
 }
 
 
