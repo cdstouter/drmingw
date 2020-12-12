@@ -6,7 +6,7 @@ project (drmingw)
 
 set (CPACK_PACKAGE_VERSION_MAJOR "0")
 set (CPACK_PACKAGE_VERSION_MINOR "9")
-set (CPACK_PACKAGE_VERSION_PATCH "1")
+set (CPACK_PACKAGE_VERSION_PATCH "2")
 
 
 option (ENABLE_COVERAGE "Enable code coverage." OFF)
@@ -42,7 +42,10 @@ add_subdirectory (thirdparty/zlib)
 
 # Find dlltool
 get_filename_component (GCC_NAME ${CMAKE_C_COMPILER} NAME)
-string (REPLACE gcc dlltool DLLTOOL_NAME ${GCC_NAME})
+string (REGEX REPLACE g?cc dlltool DLLTOOL_NAME ${GCC_NAME})
+if (NOT DLLTOOL_NAME MATCHES dlltool)
+    message (FATAL_ERROR "Best guessing the file name of dlltool failed: ${DLLTOOL_NAME}")
+endif ()
 find_program (DLLTOOL NAMES ${DLLTOOL_NAME})
 if (DLLTOOL)
     message (STATUS "Found dlltool: ${DLLTOOL}")
